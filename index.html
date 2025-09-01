@@ -9,22 +9,47 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      text-align: center;
       background: #f4f4f4;
+      color: #333;
     }
     header {
       background: #1a73e8;
       color: white;
       padding: 30px;
+      text-align: center;
+    }
+    nav {
+      margin: 10px 0;
+    }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
     }
     section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .founders {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .founder-card {
+      background: white;
       padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     footer {
       background: #333;
       color: white;
-      padding: 10px;
-      margin-top: 20px;
+      padding: 20px;
+      text-align: center;
     }
     button {
       background: #ff9800;
@@ -42,22 +67,53 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>🚗 FLEEGO</h1>
-    <p>Fleet-as-a-Service, Reimagined.</p>
-    <button>Join as Driver</button>
-    <button>Partner with Us</button>
-  </header>
 
-  <section>
-    <h2>Why Fleego?</h2>
-    <p>✔ Shift-Based Scheduling</p>
-    <p>✔ Higher Earnings for Drivers</p>
-    <p>✔ Continuous Fleet Operation</p>
-  </section>
+<header>
+  <h1>🚗 FLEEGO</h1>
+  <p>Fleet-as-a-Service, Reimagined.</p>
+  <nav>
+    <a href="#about">About Us</a>
+    <a href="#founders">Founders</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button>Join as Driver</button>
+  <button>Partner with Us</button>
+</header>
 
-  <footer>
-    <p>© 2025 Fleego Mobility Services</p>
-  </footer>
+<section id="about">
+  <h2>About Fleego</h2>
+  <p>
+    Fleego provides smart shift-based fleet management solutions.  
+    We help drivers maximize earnings while offering seamless vehicle rentals.  
+    Our mission is continuous fleet operation and driver profitability.
+  </p>
+</section>
+
+<section id="founders">
+  <h2>Meet the Founders</h2>
+  <div class="founders">
+    <div class="founder-card">
+      <h3>Safan KP</h3>
+      <p>Co-Founder</p>
+    </div>
+    <div class="founder-card">
+      <h3>Haritha Mohan</h3>
+      <p>Co-Founder</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>WhatsApp us for any inquiries:</p>
+  <a href="https://wa.me/your-number" target="_blank">
+    <button>Message on WhatsApp</button>
+  </a>
+</section>
+
+<footer>
+  <p>© 2025 Fleego Mobility Services</p>
+</footer>
+
 </body>
 </html>
