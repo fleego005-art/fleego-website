@@ -3,198 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fleego – Fleet-as-a-Service</title>
-
-  <!-- GOOGLE FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* --- Global --- */
-    body {
-      font-family: 'Roboto', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-      color: #333;
-      scroll-behavior: smooth;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    /* --- Header --- */
-    header {
-      background: linear-gradient(135deg, #1a73e8, #4285f4);
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    nav {
-      margin: 20px 0;
-    }
-    nav a {
-      margin: 0 15px;
-      color: white;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #ff9800;
-    }
-    header h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-    header button {
-      background: #ff9800;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      margin: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-    header button:hover {
-      background: #e68900;
-      transform: scale(1.05);
-    }
-
-    /* --- Sections --- */
-    section {
-      padding: 60px 20px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1s forwards;
-      animation-delay: 0.2s;
-    }
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    section h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-    section p {
-      font-size: 18px;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* --- Founders Section --- */
-    .founders {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin-top: 30px;
-    }
-    .founder-card {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      width: 220px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .founder-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    }
-    .founder-card img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 15px;
-    }
-
-    /* --- Contact Section --- */
-    #contact button {
-      background: #25D366; /* WhatsApp green */
-      color: white;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-    #contact button:hover {
-      background: #1ebe57;
-      transform: scale(1.05);
-    }
-
-    /* --- Footer --- */
-    footer {
-      background: #333;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-  </style>
+  <title>FLEEGO – Fleet-as-a-Service</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-<!-- --- HEADER --- -->
-<header>
-  <h1>🚗 FLEEGO</h1>
-  <p>Fleet-as-a-Service, Reimagined.</p>
-  <nav>
-    <a href="#about">About Us</a>
-    <a href="#founders">Founders</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <button>Join as Driver</button>
-  <button>Partner with Us</button>
-</header>
+  <!-- Navbar -->
+  <header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <nav class="container mx-auto flex justify-between items-center p-4">
+      <a href="index.html" class="text-2xl font-bold text-blue-600">FLEEGO</a>
+      <ul class="flex space-x-6">
+        <li><a href="about.html" class="hover:text-blue-600">About Us</a></li>
+        <li><a href="founders.html" class="hover:text-blue-600">Founders</a></li>
+        <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
+        <li><a href="login.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Login</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<!-- --- ABOUT SECTION --- -->
-<section id="about">
-  <h2>About Fleego</h2>
-  <p>
-    Fleego provides smart shift-based fleet management solutions.  
-    We help drivers maximize earnings while offering seamless vehicle rentals.  
-    Our mission is continuous fleet operation and driver profitability.
-  </p>
-</section>
-
-<!-- --- FOUNDERS SECTION --- -->
-<section id="founders">
-  <h2>Meet the Founders</h2>
-  <div class="founders">
-    <div class="founder-card">
-      <img src="https://via.placeholder.com/200x200.png?text=Safan+KP" alt="Safan KP">
-      <h3>Safan KP</h3>
-      <p>Co-Founder</p>
+  <!-- Hero Section -->
+  <section class="h-screen flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
+    <div>
+      <h1 class="text-5xl font-bold mb-6">Fleet-as-a-Service, Reimagined.</h1>
+      <p class="text-lg mb-8">Smart shift-based fleet models for continuous operation, higher earnings, and platform-ready scalability.</p>
+      <a href="login.html" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow-lg">Join Fleego</a>
     </div>
-    <div class="founder-card">
-      <img src="https://via.placeholder.com/200x200.png?text=Haritha+Mohan" alt="Haritha Mohan">
-      <h3>Haritha Mohan</h3>
-      <p>Co-Founder</p>
+  </section>
+
+  <!-- Features -->
+  <section class="container mx-auto py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">Why Choose Fleego?</h2>
+    <div class="grid md:grid-cols-3 gap-10 text-center">
+      <div class="p-6 shadow-lg rounded-xl bg-white">
+        <h3 class="text-xl font-semibold mb-3">Shift-Based Scheduling</h3>
+        <p>Continuous vehicle operation with morning, evening, and night shifts for maximum earning.</p>
+      </div>
+      <div class="p-6 shadow-lg rounded-xl bg-white">
+        <h3 class="text-xl font-semibold mb-3">Driver Benefits</h3>
+        <p>Accommodation, food, and flexible work shifts ensure drivers earn and live better.</p>
+      </div>
+      <div class="p-6 shadow-lg rounded-xl bg-white">
+        <h3 class="text-xl font-semibold mb-3">Data-Driven Dashboards</h3>
+        <p>Real-time profit summaries for drivers, admins, and the CEO at your fingertips.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- --- CONTACT SECTION --- -->
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>WhatsApp us for any inquiries:</p>
-  <a href="https://wa.me/your-number" target="_blank">
-    <button>Message on WhatsApp</button>
-  </a>
-</section>
-
-<!-- --- FOOTER --- -->
-<footer>
-  <p>© 2025 Fleego Mobility Services</p>
-</footer>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 text-center py-6">
+    <p>© 2025 Fleego Mobility Services. All Rights Reserved.</p>
+  </footer>
 
 </body>
 </html>
