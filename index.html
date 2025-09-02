@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fleego – Fleet-as-a-Service</title>
-  <!-- Tailwind CSS CDN for professional layout -->
+  <title>FLEEGO – Fleet-as-a-Service</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Animate.css for simple animations -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -25,46 +23,72 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="h-screen flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
-    <div class="animate__animated animate__fadeIn">
+  <section class="h-screen flex flex-col items-center justify-center text-white text-center relative bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1600&q=80');">
+    <div class="bg-black bg-opacity-50 p-8 rounded-lg animate__animated animate__fadeIn">
       <h1 class="text-5xl font-bold mb-6">Fleet-as-a-Service, Reimagined.</h1>
       <p class="text-lg mb-8">Smart shift-based fleet models for continuous operation, higher earnings, and platform-ready scalability.</p>
       <a href="login.html" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow-lg">Join Fleego</a>
     </div>
+
+    <!-- Floating Scroll Indicator -->
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
   </section>
 
-  <!-- WhatsApp Chat Button -->
-  <a href="https://wa.me/918147743329" target="_blank" class="fixed bottom-6 right-6 bg-green-500 p-4 rounded-full shadow-lg">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-8 h-8">
-  </a>
+  <!-- Features Section -->
+  <section class="container mx-auto py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">Why Choose Fleego?</h2>
+    <div class="grid md:grid-cols-3 gap-10 text-center">
+      <div class="p-6 shadow-lg rounded-xl bg-white">
+        <h3 class="text-xl font-semibold mb-3">Shift-Based Scheduling</h3>
+        <p>Continuous vehicle operation with morning, evening, and night shifts for maximum earning.</p>
+      </div>
+      <div class="p-6 shadow-lg rounded-xl bg-white">
+        <h3 class="text-xl font-semibold mb-3">Driver Benefits</h3>
+        <p>Accommodation, food, and flexible work shifts ensure drivers earn and live better.</p>
+      </div>
+      <div class="p-6 shadow-lg rounded-xl bg-white">
+        <h3 class="text-xl font-semibold mb-3">Data-Driven Dashboards</h3>
+        <p>Real-time profit summaries for drivers, admins, and the CEO at your fingertips.</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- Chatbot Widget (Basic Example) -->
-  <script>
-    (function(){
-      let botDiv = document.createElement('div');
-      botDiv.style.position = 'fixed';
-      botDiv.style.bottom = '80px';
-      botDiv.style.right = '20px';
-      botDiv.style.width = '60px';
-      botDiv.style.height = '60px';
-      botDiv.style.background = '#1a73e8';
-      botDiv.style.borderRadius = '50%';
-      botDiv.style.display = 'flex';
-      botDiv.style.alignItems = 'center';
-      botDiv.style.justifyContent = 'center';
-      botDiv.style.cursor = 'pointer';
-      botDiv.innerHTML = '💬';
-      document.body.appendChild(botDiv);
-
-      botDiv.onclick = function() {
-        alert('Hello! Welcome to Fleego. How can we help you today?');
-      };
-    })();
-  </script>
-
-  <footer class="bg-gray-900 text-gray-400 text-center py-6 mt-12">
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 text-center py-6">
     <p>© 2025 Fleego Mobility Services. All Rights Reserved.</p>
   </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/8147743329" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition duration-300 z-50">
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M20.52 3.478a11.728 11.728 0 00-16.46 0c-4.582 4.582-4.582 12.002 0 16.584l-1.792 6.527 6.75-1.79c4.58 4.58 12 4.58 16.58 0a11.728 11.728 0 000-16.582zM12 20a8 8 0 110-16 8 8 0 010 16zm4-7c-.2-.1-1.16-.57-1.34-.64-.18-.07-.31-.1-.44.1-.13.2-.5.64-.61.77-.11.13-.22.15-.42.05-.2-.1-.85-.31-1.62-1-.6-.54-1-1.21-1.11-1.41-.11-.2-.01-.31.09-.41.09-.09.2-.22.3-.33.1-.11.13-.2.2-.33.07-.13.03-.25-.02-.35-.06-.1-.44-1.07-.6-1.46-.16-.39-.32-.34-.44-.35-.12-.01-.25-.01-.38-.01s-.35.05-.53.25c-.18.21-.7.69-.7 1.68s.72 1.95.82 2.08c.1.13 1.42 2.17 3.44 3.04 2.02.87 2.02.58 2.38.54.36-.03 1.17-.48 1.34-.95.16-.46.16-.86.11-.95-.05-.1-.18-.15-.38-.25z"/>
+    </svg>
+  </a>
+
+  <!-- Chatbot Placeholder -->
+  <div id="chatbot" class="fixed bottom-20 right-6 w-72 h-96 bg-white shadow-lg rounded-xl overflow-hidden z-50 hidden">
+    <!-- Chatbot content will go here -->
+    <div class="bg-blue-600 text-white p-4 font-bold">Fleego Assistant</div>
+    <div class="p-4 h-80 overflow-y-auto">
+      <p>Hello! How can I help you today?</p>
+    </div>
+    <input type="text" placeholder="Type your message..." class="w-full p-2 border-t border-gray-200">
+  </div>
+
+  <script>
+    // Toggle chatbot
+    const chatbot = document.getElementById('chatbot');
+    const chatButton = document.querySelector('.chat-button');
+    if(chatButton){
+      chatButton.addEventListener('click', () => {
+        chatbot.classList.toggle('hidden');
+      });
+    }
+  </script>
 
 </body>
 </html>
