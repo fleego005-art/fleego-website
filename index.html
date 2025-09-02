@@ -112,14 +112,58 @@
     }
 
     /* Sections */
-    section { height:100vh; display:flex; justify-content:center; align-items:center; font-size:2rem; }
-    #about{ background:#f2f2f2; color:#333; flex-direction:column; text-align:center; padding:50px;}
-    #services{ background:#333; color:white; flex-direction:column; text-align:center; padding:50px;}
-    #contact{ background:#f2f2f2; color:#333; flex-direction:column; text-align:center; padding:50px;}
+    section { display:flex; justify-content:center; align-items:center; font-size:2rem; flex-direction:column; padding:50px;}
+    #about{ background:#f2f2f2; color:#333; text-align:center;}
+    #services{ background:#333; color:white; text-align:center;}
+    #contact{ background:#f2f2f2; color:#333; text-align:center;}
 
-    /* Chat & WhatsApp placeholders */
-    .chatbot { position:fixed; bottom:100px; right:20px; width:60px; height:60px; background:#ff4d4d; border-radius:50%; display:flex; justify-content:center; align-items:center; color:white; font-weight:bold; cursor:pointer; z-index:10; }
-    .whatsapp { position:fixed; bottom:20px; right:20px; width:60px; height:60px; background:#25D366; border-radius:50%; display:flex; justify-content:center; align-items:center; color:white; font-weight:bold; font-size:1.2rem; cursor:pointer; z-index:10; }
+    /* Chat & WhatsApp widget styles */
+    #chat-widget {
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      z-index:1000;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:10px;
+    }
+    #chatBtn {
+      background:#ff4d4d; 
+      color:white; 
+      border:none; 
+      padding:15px 20px; 
+      border-radius:50px; 
+      cursor:pointer; 
+      font-weight:bold;
+    }
+    #chatBox {
+      display:none; 
+      width:300px; 
+      height:400px; 
+      background:white; 
+      border-radius:10px; 
+      box-shadow:0 0 10px rgba(0,0,0,0.3); 
+      overflow:hidden; 
+      flex-direction:column;
+    }
+    #chatBoxHeader {
+      background:#ff4d4d; 
+      color:white; 
+      padding:10px; 
+      font-weight:bold;
+    }
+    #chatContent {
+      padding:10px; 
+      flex:1; 
+      overflow-y:auto;
+    }
+    #chatInput {
+      width:100%; 
+      border:none; 
+      padding:10px; 
+      box-sizing:border-box;
+    }
   </style>
 </head>
 <body>
@@ -153,27 +197,20 @@
   </section>
 
   <!-- About Section -->
-  <!-- About Section -->
-<section id="about" style="background:#f2f2f2; color:#333; flex-direction:column; text-align:center; padding:50px;">
-  <h2>About Fleego</h2>
-  <p>Fleego is a next-generation fleet management platform designed to maximize driver earnings and optimize vehicle utilization. We operate 3 shifts — Morning, Evening, and Night — ensuring zero downtime and continuous availability for riders.</p>
-
-  <p>Our mission is to empower drivers with flexible work schedules, competitive earnings, and support to grow their fleet operations, while providing riders with reliable and professional rides anytime, anywhere.</p>
-
-  <p>Fleego’s fleet models are built for scalability and efficiency. Our Fleet Alpha drivers work full-time shifts, Fleet Beta covers evening part-time shifts, and Fleet Gama drivers operate under a revenue-sharing model to ensure maximum profitability.</p>
-
-  <p>We integrate seamlessly with Uber, Ola, and other ride-sharing platforms, allowing drivers to focus on trips while we handle the operational backbone, including vehicle management, CNG/maintenance support, and trip tracking.</p>
-
-  <p>With Fleego, drivers benefit from:</p>
-  <ul style="list-style-type: disc; margin-top:20px; text-align:left; max-width:600px; margin-left:auto; margin-right:auto;">
-    <li>Flexible shifts and guaranteed minimum earnings</li>
-    <li>24/7 support and assistance for drivers</li>
-    <li>Accommodation, food, and CNG assistance where applicable</li>
-    <li>Advanced dashboards to track trips, earnings, and performance</li>
-    <li>Opportunities to scale up and manage multiple vehicles</li>
-  </ul>
-</section>
-
+  <section id="about">
+    <h2>About Fleego</h2>
+    <p>Fleego is a next-generation fleet management platform designed to maximize driver earnings and optimize vehicle utilization. We operate 3 shifts — Morning, Evening, and Night — ensuring zero downtime and continuous availability for riders.</p>
+    <p>Our mission is to empower drivers with flexible work schedules, competitive earnings, and support to grow their fleet operations, while providing riders with reliable and professional rides anytime, anywhere.</p>
+    <p>Fleego’s fleet models are built for scalability and efficiency. Our Fleet Alpha drivers work full-time shifts, Fleet Beta covers evening part-time shifts, and Fleet Gama drivers operate under a revenue-sharing model to ensure maximum profitability.</p>
+    <p>We integrate seamlessly with Uber, Ola, and other ride-sharing platforms, allowing drivers to focus on trips while we handle the operational backbone, including vehicle management, CNG/maintenance support, and trip tracking.</p>
+    <ul style="list-style-type: disc; margin-top:20px; text-align:left; max-width:600px; margin-left:auto; margin-right:auto;">
+      <li>Flexible shifts and guaranteed minimum earnings</li>
+      <li>24/7 support and assistance for drivers</li>
+      <li>Accommodation, food, and CNG assistance where applicable</li>
+      <li>Advanced dashboards to track trips, earnings, and performance</li>
+      <li>Opportunities to scale up and manage multiple vehicles</li>
+    </ul>
+  </section>
 
   <!-- Services Section -->
   <section id="services">
@@ -187,9 +224,25 @@
     <p>📍 Bangalore, Karnataka | 📞 +91 81477 43329 | ✉ support@fleego.com</p>
   </section>
 
-  <!-- Chat & WhatsApp buttons -->
-  <div class="chatbot">💬</div>
-  <div class="whatsapp">📱</div>
+  <!-- Chat & WhatsApp widget -->
+  <div id="chat-widget">
+    <!-- Chat Bot Button -->
+    <button id="chatBtn">Chat 💬</button>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/918147743329" target="_blank" style="background:#25D366; color:white; padding:15px 20px; border-radius:50px; text-decoration:none; font-weight:bold;">
+      WhatsApp 💬
+    </a>
+
+    <!-- Chat Box -->
+    <div id="chatBox">
+      <div id="chatBoxHeader">Fleego Chat</div>
+      <div id="chatContent">
+        <p>Hi! Welcome to Fleego. How can we help you today?</p>
+      </div>
+      <input type="text" id="chatInput" placeholder="Type a message..." />
+    </div>
+  </div>
 
   <script>
     // Scroll Down Button
@@ -197,59 +250,34 @@
     scrollDown.addEventListener('click', ()=>{
       document.getElementById('about').scrollIntoView({behavior:'smooth'});
     });
+
+    // Chat Bot functionality
+    const chatBtn = document.getElementById('chatBtn');
+    const chatBox = document.getElementById('chatBox');
+    const chatInput = document.getElementById('chatInput');
+    const chatContent = document.getElementById('chatContent');
+
+    chatBtn.addEventListener('click', () => {
+      chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+      chatBox.style.flexDirection = 'column';
+    });
+
+    chatInput.addEventListener('keypress', function(e){
+      if(e.key === 'Enter' && chatInput.value.trim() !== ''){
+        const userMsg = document.createElement('p');
+        userMsg.textContent = "You: " + chatInput.value;
+        chatContent.appendChild(userMsg);
+
+        const botReply = document.createElement('p');
+        botReply.textContent = "Fleego Bot: Thank you! We will get back to you shortly.";
+        botReply.style.color = "blue";
+        chatContent.appendChild(botReply);
+
+        chatInput.value = '';
+        chatContent.scrollTop = chatContent.scrollHeight;
+      }
+    });
   </script>
-<!-- Your page content here -->
-
-<!-- Chat & WhatsApp Widget -->
-<div id="chat-widget" style="position:fixed; bottom:20px; right:20px; z-index:1000; display:flex; flex-direction:column; align-items:flex-end; gap:10px;">
-  <!-- Chat Bot Button -->
-  <button id="chatBtn" style="background:#ff4d4d; color:white; border:none; padding:15px 20px; border-radius:50px; cursor:pointer; font-weight:bold;">
-    Chat 💬
-  </button>
-
-  <!-- WhatsApp Button -->
-  <a href="https://wa.me/918147743329" target="_blank" style="background:#25D366; color:white; padding:15px 20px; border-radius:50px; text-decoration:none; font-weight:bold;">
-    WhatsApp 💬
-  </a>
-
-  <!-- Chat Box -->
-  <div id="chatBox" style="display:none; width:300px; height:400px; background:white; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.3); overflow:hidden; flex-direction:column;">
-    <div style="background:#ff4d4d; color:white; padding:10px; font-weight:bold;">Fleego Chat</div>
-    <div id="chatContent" style="padding:10px; flex:1; overflow-y:auto;">
-      <p>Hi! Welcome to Fleego. How can we help you today?</p>
-    </div>
-    <input type="text" id="chatInput" placeholder="Type a message..." style="width:100%; border:none; padding:10px; box-sizing:border-box;" />
-  </div>
-</div>
-
-<script>
-  const chatBtn = document.getElementById('chatBtn');
-  const chatBox = document.getElementById('chatBox');
-  const chatInput = document.getElementById('chatInput');
-  const chatContent = document.getElementById('chatContent');
-
-  // Open/close chat box
-  chatBtn.addEventListener('click', () => {
-    chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
-  });
-
-  // Handle chat input
-  chatInput.addEventListener('keypress', function(e) {
-    if(e.key === 'Enter' && chatInput.value.trim() !== '') {
-      const userMsg = document.createElement('p');
-      userMsg.textContent = "You: " + chatInput.value;
-      chatContent.appendChild(userMsg);
-
-      const botReply = document.createElement('p');
-      botReply.textContent = "Fleego Bot: Thank you! We will get back to you shortly.";
-      botReply.style.color = "blue";
-      chatContent.appendChild(botReply);
-
-      chatInput.value = '';
-      chatContent.scrollTop = chatContent.scrollHeight;
-    }
-  });
-</script>
 
 </body>
 </html>
