@@ -12,140 +12,72 @@
   <style>
     /* Reset & base */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-    body { overflow-x: hidden; }
+    body { overflow-x: hidden; scroll-behavior: smooth; }
 
     /* Navigation */
     nav {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 50px;
-      z-index: 10;
+      position: fixed; width: 100%; top: 0; left: 0;
+      display: flex; justify-content: space-between;
+      padding: 20px 50px; z-index: 10;
       background: rgba(0,0,0,0.5);
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+    nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; transition: 0.3s; }
     nav a:hover { color: #ff4d4d; }
-    .logo { color:white; font-weight:bold; font-size:1.5rem; }
 
-    /* Hero Slideshow */
-    .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      overflow: hidden;
-    }
-    .hero-slideshow {
-      position: absolute;
-      top:0; left:0; right:0; bottom:0;
-      z-index:1;
-    }
+    /* Hero Section */
+    .hero { position: relative; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
+    .hero::after { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); z-index:1; }
+
+    /* Slideshow */
+    .hero-slideshow { position: absolute; top: 0; left: 0; right:0; bottom:0; z-index:0; }
     .slide {
-      position: absolute;
-      width:100%; height:100%;
-      background-position:center;
-      background-size:cover;
-      opacity:0;
-      animation: fadeSlides 20s infinite;
+      position: absolute; width:100%; height:100%;
+      background-position:center; background-size:cover;
+      animation: slideFade 16s infinite; opacity:1;
     }
     .slide:nth-child(1) { animation-delay: 0s; }
-    .slide:nth-child(2) { animation-delay: 5s; }
-    .slide:nth-child(3) { animation-delay: 10s; }
-    .slide:nth-child(4) { animation-delay: 15s; }
+    .slide:nth-child(2) { animation-delay: 4s; }
+    .slide:nth-child(3) { animation-delay: 8s; }
+    .slide:nth-child(4) { animation-delay: 12s; }
 
-    @keyframes fadeSlides {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      33% { opacity: 1; }
-      43% { opacity: 0; }
-      100% { opacity: 0; }
+    @keyframes slideFade {
+      0% { opacity: 1; }
+      20% { opacity: 1; }
+      25% { opacity: 0; }
+      95% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
-    .hero::after {
-      content:'';
-      position:absolute;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.5);
-      z-index:2;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      animation: fadeIn 2s ease-out forwards;
-    }
+    .hero-content { position: relative; z-index: 2; animation: fadeIn 2s ease-out forwards; }
     h1 { font-size: 3rem; margin-bottom: 20px; }
     p { font-size: 1.5rem; margin-bottom: 40px; }
     .btn {
-      background-color: #ff4d4d;
-      color: white;
-      padding: 15px 30px;
-      margin: 10px;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: bold;
-      transition: all 0.3s ease;
+      background-color: #ff4d4d; color: white; padding: 15px 30px; margin: 10px;
+      text-decoration: none; border-radius: 50px; font-weight: bold; transition: all 0.3s ease;
     }
     .btn:hover { background-color: #e60000; transform: translateY(-5px); }
 
-    .scroll-down {
-      position: absolute;
-      bottom: 20px;
-      font-size: 2rem;
-      color: white;
-      animation: bounce 2s infinite;
-      cursor: pointer;
-      z-index:3;
-    }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-15px); }
-      60% { transform: translateY(-7px); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .scroll-down { position: absolute; bottom: 20px; font-size: 2rem; color: white; animation: bounce 2s infinite; cursor: pointer; }
+    @keyframes bounce { 0%,20%,50%,80%,100%{transform:translateY(0);} 40%{transform:translateY(-15px);} 60%{transform:translateY(-7px);} }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
 
     /* Sections */
-    section { height: 100vh; display: flex; justify-content: center; align-items: center; font-size: 2rem; text-align:center; padding: 0 2em;}
+    section { min-height: 100vh; display:flex; justify-content:center; align-items:center; font-size:2rem; padding: 50px; text-align:center; }
     #about { background:#f2f2f2; color:#333; }
     #services { background:#333; color:white; }
     #contact { background:#f2f2f2; color:#333; }
 
-    /* Smooth Scroll */
-    html { scroll-behavior: smooth; }
-
-    /* WhatsApp & Chatbot Buttons */
-    .whatsapp-btn, .chat-btn {
-      position: fixed;
-      right: 20px;
-      border-radius: 50%;
-      padding: 15px;
-      font-size: 1.5rem;
-      z-index: 100;
-      box-shadow:0 5px 15px rgba(0,0,0,0.3);
-      color: white;
-      text-decoration: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    /* WhatsApp button */
+    .whatsapp-btn {
+      position: fixed; bottom: 20px; right: 20px; z-index: 100;
     }
-    .whatsapp-btn { bottom: 20px; background: #25D366; }
-    .chat-btn { bottom: 90px; background: #ff4d4d; }
+    .whatsapp-btn img { width: 60px; height:60px; cursor:pointer; }
 
+    /* Chatbot button */
+    .chatbot-btn {
+      position: fixed; bottom: 100px; right: 20px; z-index: 100;
+    }
+    .chatbot-btn img { width: 60px; height:60px; cursor:pointer; }
   </style>
 </head>
 <body>
@@ -169,12 +101,14 @@
       <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1590928499787-98ab70f30f7a?auto=format&fit=crop&w=1950&q=80');"></div>
       <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1950&q=80');"></div>
     </div>
+
     <div class="hero-content">
       <h1>FLEEGO – Fleet-as-a-Service</h1>
       <p>Smart shift-based fleet models for continuous operation and higher earnings.</p>
       <a href="#about" class="btn">Learn More</a>
       <a href="login.html" class="btn">Join as Driver</a>
     </div>
+
     <div class="scroll-down">&#x25BC;</div>
   </section>
 
@@ -202,12 +136,19 @@
     </div>
   </section>
 
-  <!-- WhatsApp & Chat Buttons -->
-  <a href="https://wa.me/917000000000" target="_blank" class="whatsapp-btn">💬</a>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwcw-FGl6pvYDb_3e2D99vff6IkD848Fibx253qbc_R6WJIA/viewform?usp=header" target="_blank" class="chat-btn">📝</a>
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/918147743329" target="_blank" class="whatsapp-btn">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
 
-  <!-- JS for Scroll Down -->
+  <!-- Chatbot Button -->
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwcw-FGl6pvYDb_3e2D99vff6IkD848Fibx253qbc_R6WJIA/viewform?usp=header" target="_blank" class="chatbot-btn">
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712031.png" alt="Chatbot">
+  </a>
+
+  <!-- JS -->
   <script>
+    // Scroll down hero
     const scrollDown = document.querySelector('.scroll-down');
     scrollDown.addEventListener('click', () => {
       document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
