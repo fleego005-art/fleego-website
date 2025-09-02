@@ -1,283 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fleego - Fleet as a Service</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fleego - Fleet as a Service</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Roboto', sans-serif; }
+body { overflow-x:hidden; }
 
-  <!-- CSS -->
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Roboto', sans-serif; }
-    body { overflow-x:hidden; }
+/* Navigation */
+nav {
+  position: fixed;
+  width: 100%;
+  top:0; left:0;
+  display:flex;
+  justify-content: space-between;
+  padding:20px 50px;
+  z-index:10;
+  background: rgba(0,0,0,0.5);
+}
+nav a { color:white; text-decoration:none; margin:0 15px; font-weight:bold; transition:0.3s; }
+nav a:hover { color:#ff4d4d; }
+.logo { font-size:1.5rem; font-weight:bold; }
 
-    /* Navigation */
-    nav {
-      position: fixed;
-      width: 100%;
-      top:0; left:0;
-      display:flex;
-      justify-content: space-between;
-      padding:20px 50px;
-      z-index:10;
-      background: rgba(0,0,0,0.5);
-    }
-    nav a { color:white; text-decoration:none; margin:0 15px; font-weight:bold; transition:0.3s; }
-    nav a:hover { color:#ff4d4d; }
-    .logo { font-size:1.5rem; font-weight:bold; }
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-slideshow {
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  z-index:1;
+}
+.slide {
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-position:center;
+  background-size:cover;
+  opacity:0;
+  animation:fadeSlides 20s infinite;
+}
+.slide:nth-child(1){ animation-delay:0s; }
+.slide:nth-child(2){ animation-delay:5s; }
+.slide:nth-child(3){ animation-delay:10s; }
+.slide:nth-child(4){ animation-delay:15s; }
 
-    /* Hero Section */
-    .hero {
-      position: relative;
-      height: 100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      color:white;
-      text-align:center;
-      overflow:hidden;
-    }
-    .hero-slideshow {
-      position:absolute;
-      top:0; left:0; right:0; bottom:0;
-      z-index:1;
-    }
-    .slide {
-      position:absolute;
-      width:100%;
-      height:100%;
-      background-position:center;
-      background-size:cover;
-      opacity:0;
-      animation:fadeSlides 20s infinite;
-    }
-    .slide:nth-child(1){ animation-delay:0s; }
-    .slide:nth-child(2){ animation-delay:5s; }
-    .slide:nth-child(3){ animation-delay:10s; }
-    .slide:nth-child(4){ animation-delay:15s; }
+@keyframes fadeSlides {
+  0% { opacity:0; }
+  10% { opacity:1; }
+  25% { opacity:1; }
+  35% { opacity:0; }
+  100% { opacity:0; }
+}
 
-    @keyframes fadeSlides {
-      0% { opacity:0; }
-      10% { opacity:1; }
-      25% { opacity:1; }
-      35% { opacity:0; }
-      100% { opacity:0; }
-    }
+.hero::after {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.4);
+  z-index:2;
+}
 
-    .hero::after {
-      content:'';
-      position:absolute;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.4);
-      z-index:2;
-    }
+.hero-content {
+  position:relative;
+  z-index:3;
+  animation:fadeIn 2s ease-out forwards;
+}
+.hero-content h1 { font-size:3rem; margin-bottom:20px; }
+.hero-content p { font-size:1.5rem; margin-bottom:40px; }
+.btn {
+  background-color:#ff4d4d;
+  color:white;
+  padding:15px 30px;
+  margin:10px;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:bold;
+  transition: all 0.3s ease;
+}
+.btn:hover { background-color:#e60000; transform: translateY(-5px); }
 
-    .hero-content {
-      position:relative;
-      z-index:3;
-      animation:fadeIn 2s ease-out forwards;
-    }
-    .hero-content h1 { font-size:3rem; margin-bottom:20px; }
-    .hero-content p { font-size:1.5rem; margin-bottom:40px; }
-    .btn {
-      background-color:#ff4d4d;
-      color:white;
-      padding:15px 30px;
-      margin:10px;
-      text-decoration:none;
-      border-radius:50px;
-      font-weight:bold;
-      transition: all 0.3s ease;
-    }
-    .btn:hover { background-color:#e60000; transform: translateY(-5px); }
+.scroll-down {
+  position:absolute;
+  bottom:20px;
+  font-size:2rem;
+  color:white;
+  animation:bounce 2s infinite;
+  cursor:pointer;
+}
+@keyframes bounce {
+  0%,20%,50%,80%,100%{ transform: translateY(0); }
+  40%{ transform: translateY(-15px); }
+  60%{ transform: translateY(-7px); }
+}
+@keyframes fadeIn { from{ opacity:0; transform:translateY(30px);} to{ opacity:1; transform:translateY(0);} }
 
-    .scroll-down {
-      position:absolute;
-      bottom:20px;
-      font-size:2rem;
-      color:white;
-      animation:bounce 2s infinite;
-      cursor:pointer;
-    }
-    @keyframes bounce {
-      0%,20%,50%,80%,100%{ transform: translateY(0); }
-      40%{ transform: translateY(-15px); }
-      60%{ transform: translateY(-7px); }
-    }
-    @keyframes fadeIn {
-      from{ opacity:0; transform:translateY(30px);}
-      to{ opacity:1; transform:translateY(0);}
-    }
+/* Sections */
+section { display:flex; justify-content:center; align-items:center; font-size:2rem; flex-direction:column; text-align:center; padding:50px; }
+#about{ background:#f2f2f2; color:#333; }
+#services{ background:#333; color:white; }
+#contact{ background:#f2f2f2; color:#333; }
 
-    /* Sections */
-    section { display:flex; justify-content:center; align-items:center; font-size:2rem; flex-direction:column; padding:50px;}
-    #about{ background:#f2f2f2; color:#333; text-align:center;}
-    #services{ background:#333; color:white; text-align:center;}
-    #contact{ background:#f2f2f2; color:#333; text-align:center;}
+/* Chat & WhatsApp */
+#chat-widget { position:fixed; bottom:20px; right:20px; z-index:1000; display:flex; flex-direction:column; align-items:flex-end; gap:10px; }
+#chatBtn, .whatsapp { border:none; padding:15px 20px; border-radius:50px; font-weight:bold; cursor:pointer; }
+#chatBtn { background:#ff4d4d; color:white; }
+.whatsapp { background:#25D366; color:white; text-decoration:none; display:flex; align-items:center; justify-content:center; }
+#chatBox {
+  display:none; width:300px; height:400px; background:white; border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,0.3); flex-direction:column; overflow:hidden;
+}
+#chatBoxHeader { background:#ff4d4d; color:white; padding:10px; font-weight:bold; }
+#chatContent { padding:10px; flex:1; overflow-y:auto; }
+#chatInput { width:100%; border:none; padding:10px; box-sizing:border-box; }
 
-    /* Chat & WhatsApp widget styles */
-    #chat-widget {
-      position:fixed;
-      bottom:20px;
-      right:20px;
-      z-index:1000;
-      display:flex;
-      flex-direction:column;
-      align-items:flex-end;
-      gap:10px;
-    }
-    #chatBtn {
-      background:#ff4d4d; 
-      color:white; 
-      border:none; 
-      padding:15px 20px; 
-      border-radius:50px; 
-      cursor:pointer; 
-      font-weight:bold;
-    }
-    #chatBox {
-      display:none; 
-      width:300px; 
-      height:400px; 
-      background:white; 
-      border-radius:10px; 
-      box-shadow:0 0 10px rgba(0,0,0,0.3); 
-      overflow:hidden; 
-      flex-direction:column;
-    }
-    #chatBoxHeader {
-      background:#ff4d4d; 
-      color:white; 
-      padding:10px; 
-      font-weight:bold;
-    }
-    #chatContent {
-      padding:10px; 
-      flex:1; 
-      overflow-y:auto;
-    }
-    #chatInput {
-      width:100%; 
-      border:none; 
-      padding:10px; 
-      box-sizing:border-box;
-    }
-  </style>
+.chat-option {
+  background:#ff4d4d; color:white; border:none; padding:5px 10px; margin:5px; border-radius:10px; cursor:pointer;
+}
+.chat-option:hover { background:#e60000; }
+#chatContent p { margin:5px 0; }
+#chatContent p.user { color:black; }
+#chatContent p.bot { color:blue; }
+</style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">Fleego </div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-      <a href="login.html">Login</a>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-slideshow">
-      <div class="slide" style="background-image:url('imag1.jpg');"></div>
-      <div class="slide" style="background-image:url('imag2.jpg');"></div>
-      <div class="slide" style="background-image:url('imag3.jpg');"></div>
-      <div class="slide" style="background-image:url('image4.jpg');"></div>
-    </div>
-    <div class="hero-content">
-      <h1>FLEEGO – Fleet-as-a-Service, Reimagined</h1>
-      <p>Smart shift-based fleet models for continuous operation and higher earnings.</p>
-      <a href="#about" class="btn">Learn More</a>
-      <a href="login.html" class="btn">Join as Driver</a>
-    </div>
-    <div class="scroll-down">&#x25BC;</div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Fleego</h2>
-    <p>Fleego is a next-generation fleet management platform designed to maximize driver earnings and optimize vehicle utilization. We operate 3 shifts — Morning, Evening, and Night — ensuring zero downtime and continuous availability for riders.</p>
-    <p>Our mission is to empower drivers with flexible work schedules, competitive earnings, and support to grow their fleet operations, while providing riders with reliable and professional rides anytime, anywhere.</p>
-    <p>Fleego’s fleet models are built for scalability and efficiency. Our Fleet Alpha drivers work full-time shifts, Fleet Beta covers evening part-time shifts, and Fleet Gama drivers operate under a revenue-sharing model to ensure maximum profitability.</p>
-    <p>We integrate seamlessly with Uber, Ola, and other ride-sharing platforms, allowing drivers to focus on trips while we handle the operational backbone, including vehicle management, CNG/maintenance support, and trip tracking.</p>
-    <ul style="list-style-type: disc; margin-top:20px; text-align:left; max-width:600px; margin-left:auto; margin-right:auto;">
-      <li>Flexible shifts and guaranteed minimum earnings</li>
-      <li>24/7 support and assistance for drivers</li>
-      <li>Accommodation, food, and CNG assistance where applicable</li>
-      <li>Advanced dashboards to track trips, earnings, and performance</li>
-      <li>Opportunities to scale up and manage multiple vehicles</li>
-    </ul>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services">
-    <h2>Our Fleet Model</h2>
-    <p>Fleet Alpha – Full-time | Fleet Beta – Evening Part-time | Fleet Gama – Revenue Share 70:30</p>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>📍 Bangalore, Karnataka | 📞 +91 81477 43329 | ✉ fleego005@gmail.com</p>
-  </section>
-
-  <!-- Chat & WhatsApp widget -->
-  <div id="chat-widget">
-    <!-- Chat Bot Button -->
-    <button id="chatBtn">Chat 💬</button>
-
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/918147743329" target="_blank" style="background:#25D366; color:white; padding:15px 20px; border-radius:50px; text-decoration:none; font-weight:bold;">
-      WhatsApp 💬
-    </a>
-
-    <!-- Chat Box -->
-    <div id="chatBox">
-      <div id="chatBoxHeader">Fleego Chat</div>
-      <div id="chatContent">
-        <p>Hi! Welcome to Fleego. How can we help you today?</p>
-      </div>
-      <input type="text" id="chatInput" placeholder="Type a message..." />
-    </div>
+<!-- Navigation -->
+<nav>
+  <div class="logo">Fleego </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="login.html">Login</a>
   </div>
+</nav>
 
-  <script>
-    // Scroll Down Button
-    const scrollDown = document.querySelector('.scroll-down');
-    scrollDown.addEventListener('click', ()=>{
-      document.getElementById('about').scrollIntoView({behavior:'smooth'});
-    });
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-slideshow">
+    <div class="slide" style="background-image:url('imag1.jpg');"></div>
+    <div class="slide" style="background-image:url('imag2.jpg');"></div>
+    <div class="slide" style="background-image:url('imag3.jpg');"></div>
+    <div class="slide" style="background-image:url('image4.jpg');"></div>
+  </div>
+  <div class="hero-content">
+    <h1>FLEEGO – Fleet-as-a-Service, Reimagined</h1>
+    <p>Smart shift-based fleet models for continuous operation and higher earnings.</p>
+    <a href="#about" class="btn">Learn More</a>
+    <a href="login.html" class="btn">Join as Driver</a>
+  </div>
+  <div class="scroll-down">&#x25BC;</div>
+</section>
 
-    // Chat Bot functionality
-    const chatBtn = document.getElementById('chatBtn');
-    const chatBox = document.getElementById('chatBox');
-    const chatInput = document.getElementById('chatInput');
-    const chatContent = document.getElementById('chatContent');
+<!-- About Section -->
+<section id="about">
+  <h2>About Fleego</h2>
+  <p>Fleego is a next-generation fleet management platform maximizing driver earnings and optimizing vehicle utilization.</p>
+  <p>We operate 3 shifts — Morning, Evening, Night — ensuring zero downtime.</p>
+  <p>Fleego’s fleet models are built for scalability and efficiency:</p>
+  <ul style="list-style:disc; max-width:600px; margin:20px auto; text-align:left;">
+    <li>Flexible shifts & guaranteed minimum earnings</li>
+    <li>24/7 driver support</li>
+    <li>Accommodation, food, and CNG assistance</li>
+    <li>Advanced dashboards for trips, earnings, performance</li>
+    <li>Opportunities to scale up and manage multiple vehicles</li>
+  </ul>
+</section>
 
-    chatBtn.addEventListener('click', () => {
-      chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
-      chatBox.style.flexDirection = 'column';
-    });
+<!-- Services Section -->
+<section id="services">
+  <h2>Our Fleet Model</h2>
+  <p>Fleet Alpha – Full-time | Fleet Beta – Evening Part-time | Fleet Gama – Revenue Share 70:30</p>
+</section>
 
-    chatInput.addEventListener('keypress', function(e){
-      if(e.key === 'Enter' && chatInput.value.trim() !== ''){
-        const userMsg = document.createElement('p');
-        userMsg.textContent = "You: " + chatInput.value;
-        chatContent.appendChild(userMsg);
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>📍 Bangalore, Karnataka | 📞 +91 81477 43329 | ✉ fleego005@gmail.com</p>
+</section>
 
-        const botReply = document.createElement('p');
-        botReply.textContent = "Fleego Bot: Thank you! We will get back to you shortly.";
-        botReply.style.color = "blue";
-        chatContent.appendChild(botReply);
+<!-- Chat & WhatsApp Widget -->
+<div id="chat-widget">
+  <button id="chatBtn">Chat 💬</button>
+  <a href="https://wa.me/918147743329" target="_blank" class="whatsapp">WhatsApp 💬</a>
 
-        chatInput.value = '';
-        chatContent.scrollTop = chatContent.scrollHeight;
-      }
-    });
-  </script>
+  <div id="chatBox">
+    <div id="chatBoxHeader">Fleego Chat</div>
+    <div id="chatContent">
+      <p class="bot">Hi! Welcome to Fleego 🤗 How can we help you today?</p>
+      <button class="chat-option">Driver Registration</button>
+      <button class="chat-option">Shift Info</button>
+      <button class="chat-option">Earnings Details</button>
+      <button class="chat-option">Contact Support</button>
+    </div>
+    <input type="text" id="chatInput" placeholder="Type your question here..." />
+  </div>
+</div>
 
+<script>
+const scrollDown = document.querySelector('.scroll-down');
+scrollDown.addEventListener('click', ()=>{ document.getElementById('about').scrollIntoView({behavior:'smooth'}); });
+
+// Chat Bot functionality
+const chatBtn = document.getElementById('chatBtn');
+const chatBox = document.getElementById('chatBox');
+const chatInput = document.getElementById('chatInput');
+const chatContent = document.getElementById('chatContent');
+
+chatBtn.addEventListener('click', () => {
+  chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+});
+
+// Chat options click
+document.addEventListener('click', function(e){
+  if(e.target.classList.contains('chat-option')){
+    const userMsg = document.createElement('p');
+    userMsg.textContent = "You: " + e.target.textContent;
+    userMsg.classList.add('user');
+    chatContent.appendChild(userMsg);
+
+    const botReply = document.createElement('p');
+    botReply.classList.add('bot');
+    botReply.textContent = "Fleego Bot: Please check our " + e.target.textContent + " page for details!";
+    chatContent.appendChild(botReply);
+    chatContent.scrollTop = chatContent.scrollHeight;
+  }
+});
+
+// Keyword replies
+chatInput.addEventListener('keypress', function(e){
+  if(e.key === 'Enter' && chatInput.value.trim() !== ''){
+    const msg = chatInput.value.toLowerCase();
+    const userMsg = document.createElement('p');
+    userMsg.textContent = "You: " + chatInput.value;
+    userMsg.classList.add('user');
+    chatContent.appendChild(userMsg);
+
+    const botReply = document.createElement('p');
+    botReply.classList.add('bot');
+
+    if(msg.includes('driver')) botReply.textContent = "Fleego Bot: Click 'Join as Driver' above to register!";
+    else if(msg.includes('shift')) botReply.textContent = "Fleego Bot: We have Morning, Evening, and Night shifts.";
+    else if(msg.includes('earnings')) botReply.textContent = "Fleego Bot: Fleet Alpha drivers earn a minimum of ₹35k/month!";
+    else botReply.textContent = "Fleego Bot: Thank you! We will get back to you shortly.";
+
+    chatContent.appendChild(botReply);
+    chatInput.value = '';
+    chatContent.scrollTop = chatContent.scrollHeight;
+  }
+});
+</script>
 </body>
 </html>
