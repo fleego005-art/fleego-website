@@ -5,26 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fleego</title>
   <style>
-    /* Hero Slideshow CSS */
     body, html {
       margin: 0; padding: 0;
       font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
     }
+    a { text-decoration: none; color: inherit; }
+    
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 50px;
+      z-index: 100;
+    }
+    nav .logo { color: #ff5c00; font-size: 1.8em; font-weight: bold; }
+    nav ul { display: flex; list-style: none; margin:0; padding:0; }
+    nav ul li { margin-left: 30px; }
+    nav ul li a { color: white; font-weight: bold; transition: 0.3s; }
+    nav ul li a:hover { color: #ff5c00; }
+
+    /* HERO SECTION */
     .hero {
       position: relative;
       height: 100vh;
-      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       color: white;
       text-align: center;
+      overflow: hidden;
     }
-    .hero-slideshow {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 1;
-    }
+    .hero-slideshow { position: absolute; top:0; left:0; right:0; bottom:0; z-index:1; }
     .slide {
       position: absolute;
       width: 100%;
@@ -34,89 +51,117 @@
       opacity: 0;
       animation: fadeSlides 15s infinite;
     }
-    .slide:nth-child(1) { animation-delay: 0s; }
-    .slide:nth-child(2) { animation-delay: 5s; }
-    .slide:nth-child(3) { animation-delay: 10s; }
-
+    .slide:nth-child(1) { animation-delay:0s; }
+    .slide:nth-child(2) { animation-delay:5s; }
+    .slide:nth-child(3) { animation-delay:10s; }
     @keyframes fadeSlides {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      33% { opacity: 1; }
-      43% { opacity: 0; }
-      100% { opacity: 0; }
+      0% {opacity:0;} 10%{opacity:1;} 33%{opacity:1;} 43%{opacity:0;} 100%{opacity:0;}
     }
     .hero::after {
       content: '';
-      position: absolute;
-      top:0; left:0; right:0; bottom:0;
+      position:absolute; top:0; left:0; right:0; bottom:0;
       background: rgba(0,0,0,0.4);
-      z-index: 2;
+      z-index:2;
     }
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      animation: fadeIn 2s ease-out forwards;
+    .hero-content { position: relative; z-index:3; animation:fadeIn 2s ease-out forwards; }
+    .hero-content h1 { font-size:3em; margin-bottom:0.5em; animation:logoBounce 2s infinite; }
+    .hero-content p { font-size:1.2em; margin-bottom:1em; }
+    .btn { padding:0.8em 1.5em; margin:0 0.5em; background:#ff5c00; color:white; border-radius:5px; font-weight:bold; transition:0.3s; }
+    .btn:hover { background:#ff7f33; }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes logoBounce {0%,100%{transform:scale(1);}50%{transform:scale(1.05);} }
+
+    /* SECTIONS */
+    section { padding: 80px 50px; min-height:100vh; display:flex; justify-content:center; align-items:center; flex-direction:column; }
+    section h2 { font-size:2.5em; margin-bottom:0.5em; color:#ff5c00; }
+    section p { font-size:1.2em; max-width:800px; text-align:center; line-height:1.6; }
+
+    /* POPUP IMAGES */
+    .popup-image { width:300px; opacity:0; transform:translateY(50px); transition:1s; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.4); margin:20px 0; }
+    .popup-image.active { opacity:1; transform:translateY(0); }
+
+    /* WHATSAPP & FORM BUTTONS */
+    .whatsapp-button, .chat-button {
+      position: fixed; bottom:20px; width:60px; height:60px; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:30px; color:white; cursor:pointer; z-index:1000;
     }
-    .hero-content h1 {
-      font-size: 3em;
-      margin-bottom: 0.5em;
-    }
-    .hero-content p {
-      font-size: 1.2em;
-      margin-bottom: 1em;
-    }
-    .btn {
-      padding: 0.8em 1.5em;
-      margin: 0 0.5em;
-      background: #ff5c00;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #ff7f33;
-    }
-    .scroll-down {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2em;
-      z-index: 3;
-      animation: bounce 2s infinite;
-    }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-      40% { transform: translateX(-50%) translateY(-15px); }
-      60% { transform: translateX(-50%) translateY(-7px); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
+    .whatsapp-button { right:20px; background:#25D366; }
+    .chat-button { right:90px; background:#007BFF; }
+
+    /* FOOTER */
+    footer { padding:30px; text-align:center; background:#111; color:white; }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section with Fading City + Cab Images -->
-  <section class="hero">
-    <div class="hero-slideshow">
-      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1605902711622-cfb43c443a60?auto=format&fit=crop&w=1950&q=80');"></div>
-      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556741533-f6acd647d2fb?auto=format&fit=crop&w=1950&q=80');"></div>
-      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1950&q=80');"></div>
-    </div>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">FLEEGO</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#founders">Founders</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </nav>
 
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-slideshow">
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1605902711622-cfb43c443a60?auto=format&fit=crop&w=1950&q=80');"></div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1556741533-f6acd647d2fb?auto=format&fit=crop&w=1950&q=80');"></div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1950&q=80');"></div>
+    </div>
     <div class="hero-content">
-      <h1>FLEEGO – Fleet-as-a-Service, Reimagined</h1>
+      <h1>FLEEGO – Fleet-as-a-Service</h1>
       <p>Smart shift-based fleet models for continuous operation and higher earnings.</p>
       <a href="#about" class="btn">Learn More</a>
-      <a href="login.html" class="btn">Join as Driver</a>
+      <a href="#contact" class="btn">Join as Driver</a>
     </div>
-
-    <div class="scroll-down">&#x25BC;</div>
   </section>
 
+  <!-- ABOUT US -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Fleego is a next-gen fleet management service focused on Uber cab operations. We provide drivers with structured shifts, higher earnings, free food and accommodation, and 24/7 support. Our mission is to create a reliable, scalable, and efficient urban mobility network for both drivers and passengers.</p>
+    <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=800&q=80" class="popup-image" alt="Fleet Service">
+  </section>
+
+  <!-- FOUNDERS -->
+  <section id="founders">
+    <h2>Founders</h2>
+    <p>Fleego is founded by Safan KP and Haritha Mohan, passionate about creating sustainable urban mobility solutions. They bring years of experience in fleet operations, logistics, and technology-driven solutions for drivers and riders.</p>
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80" class="popup-image" alt="Founder 1">
+    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" class="popup-image" alt="Founder 2">
+  </section>
+
+  <!-- CONTACT US -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions or want to join Fleego? Fill out the form or contact us directly via WhatsApp. Our team will respond promptly to help you get started.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwcw-FGl6pvYDb_3e2D99vff6IkD848Fibx253qbc_R6WJIA/viewform?usp=header" target="_blank" class="btn">Fill Contact Form</a>
+  </section>
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/919XXXXXXXXX" target="_blank" class="whatsapp-button">&#x2709;</a>
+
+  <!-- CHAT / GOOGLE FORM -->
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwcw-FGl6pvYDb_3e2D99vff6IkD848Fibx253qbc_R6WJIA/viewform?usp=header" target="_blank" class="chat-button">&#x1F4AC;</a>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 Fleego Mobility Services. All rights reserved.
+  </footer>
+
+  <script>
+    // Scroll animation for popup images
+    const images = document.querySelectorAll('.popup-image');
+    window.addEventListener('scroll', () => {
+      const trigger = window.innerHeight * 0.8;
+      images.forEach(img => {
+        const top = img.getBoundingClientRect().top;
+        if(top < trigger) img.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
