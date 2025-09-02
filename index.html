@@ -3,11 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Fleego</title>
+  <title>Fleego - Fleet as a Service</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <style>
+    /* Reset & base */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+    body { overflow-x: hidden; }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5); /* dark overlay */
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 2s ease-out forwards;
+    }
+
+    h1 { font-size: 3rem; margin-bottom: 20px; }
+    p { font-size: 1.5rem; margin-bottom: 40px; }
+
+    .btn {
+      background-color: #ff4d4d;
+      color: white;
+      padding: 15px 30px;
+      margin: 10px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #e60000;
+      transform: translateY(-5px);
+    }
+
+    /* Scroll Down Animation */
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      font-size: 2rem;
+      color: white;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-15px); }
+      60% { transform: translateY(-7px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 50px;
+      z-index: 10;
+      background: rgba(0,0,0,0.5);
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #ff4d4d; }
+
+    /* Sections */
+    section { height: 100vh; display: flex; justify-content: center; align-items: center; font-size: 2rem; }
+
+    /* Smooth Scroll */
+    html { scroll-behavior: smooth; }
+
+  </style>
 </head>
 <body>
-  <h1>About Fleego</h1>
-  <p>Fleego is a Fleet-as-a-Service company. We provide drivers with flexible shifts, professional support, and technology-driven fleet management.</p>
-  <a href="index.html">⬅ Back to Home</a>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Fleego 🚗</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a href="login.html">Login</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>FLEEGO – Fleet-as-a-Service, Reimagined</h1>
+      <p>Smart shift-based fleet models for continuous operation and higher earnings.</p>
+      <a href="#about" class="btn">Learn More</a>
+      <a href="login.html" class="btn">Join as Driver</a>
+    </div>
+    <div class="scroll-down">&#x25BC;</div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" style="background:#f2f2f2; color:#333;">
+    <div>
+      <h2>About Fleego</h2>
+      <p>We run 3 shifts — Morning, Evening, Night — ensuring zero downtime. Built for scale and ready to integrate with Uber, Ola, and more.</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" style="background:#333; color:white;">
+    <div>
+      <h2>Our Fleet Model</h2>
+      <p>Fleet Alpha – Full-time | Fleet Beta – Evening Part-time | Fleet Gama – Revenue Share 70:30</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" style="background:#f2f2f2; color:#333;">
+    <div>
+      <h2>Contact Us</h2>
+      <p>📍 Bangalore, Karnataka | 📞 +91 81477 43329 | ✉ support@fleego.com</p>
+    </div>
+  </section>
+
+  <!-- Optional JS for Scroll -->
+  <script>
+    const scrollDown = document.querySelector('.scroll-down');
+    scrollDown.addEventListener('click', () => {
+      document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+
 </body>
 </html>
