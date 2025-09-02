@@ -3,75 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FLEEGO – Fleet-as-a-Service</title>
+  <title>Fleego – Fleet-as-a-Service</title>
+  <!-- Tailwind CSS CDN for professional layout -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <style>
-    /* WhatsApp Floating Button */
-    .whatsapp-float {
-      position: fixed;
-      width: 60px;
-      height: 60px;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: white;
-      border-radius: 50%;
-      text-align: center;
-      font-size: 28px;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-      z-index: 1000;
-    }
-    .whatsapp-float i {
-      margin-top: 16px;
-    }
-
-    /* Chatbot Styles */
-    #chatbot {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 300px;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-      display: none;
-      flex-direction: column;
-      z-index: 1000;
-    }
-    #chatbot-header {
-      background: #2563eb;
-      color: white;
-      padding: 10px;
-      border-radius: 10px 10px 0 0;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    #chatbot-messages {
-      padding: 10px;
-      height: 200px;
-      overflow-y: auto;
-      font-size: 14px;
-    }
-    #chatbot-input {
-      display: flex;
-      border-top: 1px solid #ddd;
-    }
-    #chatbot-input input {
-      flex: 1;
-      padding: 8px;
-      border: none;
-      outline: none;
-    }
-    #chatbot-input button {
-      padding: 8px 12px;
-      background: #2563eb;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
+  <!-- Animate.css for simple animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
@@ -90,85 +26,45 @@
 
   <!-- Hero Section -->
   <section class="h-screen flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
-    <div>
+    <div class="animate__animated animate__fadeIn">
       <h1 class="text-5xl font-bold mb-6">Fleet-as-a-Service, Reimagined.</h1>
       <p class="text-lg mb-8">Smart shift-based fleet models for continuous operation, higher earnings, and platform-ready scalability.</p>
       <a href="login.html" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow-lg">Join Fleego</a>
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="container mx-auto py-16">
-    <h2 class="text-3xl font-bold text-center mb-12">Why Choose Fleego?</h2>
-    <div class="grid md:grid-cols-3 gap-10 text-center">
-      <div class="p-6 shadow-lg rounded-xl bg-white">
-        <h3 class="text-xl font-semibold mb-3">Shift-Based Scheduling</h3>
-        <p>Continuous vehicle operation with morning, evening, and night shifts for maximum earning.</p>
-      </div>
-      <div class="p-6 shadow-lg rounded-xl bg-white">
-        <h3 class="text-xl font-semibold mb-3">Driver Benefits</h3>
-        <p>Accommodation, food, and flexible work shifts ensure drivers earn and live better.</p>
-      </div>
-      <div class="p-6 shadow-lg rounded-xl bg-white">
-        <h3 class="text-xl font-semibold mb-3">Data-Driven Dashboards</h3>
-        <p>Real-time profit summaries for drivers, admins, and the CEO at your fingertips.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 text-center py-6">
-    <p>© 2025 Fleego Mobility Services. All Rights Reserved.</p>
-  </footer>
-
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/918147743329" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
+  <!-- WhatsApp Chat Button -->
+  <a href="https://wa.me/918147743329" target="_blank" class="fixed bottom-6 right-6 bg-green-500 p-4 rounded-full shadow-lg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-8 h-8">
   </a>
 
-  <!-- Chatbot -->
-  <div id="chatbot">
-    <div id="chatbot-header">🤖 Fleego Chatbot</div>
-    <div id="chatbot-messages">
-      <p><strong>Bot:</strong> Hi! 👋 How can I help you today?</p>
-      <p>- Join as Driver 🚗</p>
-      <p>- Partner with Fleego 🤝</p>
-      <p>- Support 🛠️</p>
-    </div>
-    <div id="chatbot-input">
-      <input type="text" id="chatbot-text" placeholder="Type a message...">
-      <button onclick="sendMessage()">Send</button>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Chatbot Widget (Basic Example) -->
   <script>
-    const chatbot = document.getElementById("chatbot");
-    const chatbotHeader = document.getElementById("chatbot-header");
-    const chatbotMessages = document.getElementById("chatbot-messages");
+    (function(){
+      let botDiv = document.createElement('div');
+      botDiv.style.position = 'fixed';
+      botDiv.style.bottom = '80px';
+      botDiv.style.right = '20px';
+      botDiv.style.width = '60px';
+      botDiv.style.height = '60px';
+      botDiv.style.background = '#1a73e8';
+      botDiv.style.borderRadius = '50%';
+      botDiv.style.display = 'flex';
+      botDiv.style.alignItems = 'center';
+      botDiv.style.justifyContent = 'center';
+      botDiv.style.cursor = 'pointer';
+      botDiv.innerHTML = '💬';
+      document.body.appendChild(botDiv);
 
-    chatbotHeader.addEventListener("click", () => {
-      chatbot.style.display = chatbot.style.display === "none" ? "flex" : "none";
-    });
-
-    function sendMessage() {
-      const input = document.getElementById("chatbot-text");
-      if (input.value.trim() === "") return;
-      const userMsg = document.createElement("p");
-      userMsg.innerHTML = "<strong>You:</strong> " + input.value;
-      chatbotMessages.appendChild(userMsg);
-
-      // Auto reply
-      const botMsg = document.createElement("p");
-      botMsg.innerHTML = "<strong>Bot:</strong> Thanks for reaching out. Our team will connect with you shortly.";
-      chatbotMessages.appendChild(botMsg);
-
-      input.value = "";
-      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-    }
+      botDiv.onclick = function() {
+        alert('Hello! Welcome to Fleego. How can we help you today?');
+      };
+    })();
   </script>
-  
+
+  <footer class="bg-gray-900 text-gray-400 text-center py-6 mt-12">
+    <p>© 2025 Fleego Mobility Services. All Rights Reserved.</p>
+  </footer>
 
 </body>
 </html>
