@@ -6,6 +6,57 @@
   <title>FLEEGO – Fleet-as-a-Service</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    /* Gradient animation */
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    .animate-gradient {
+      background: linear-gradient(-45deg, #1a73e8, #5a2fb1, #3b82f6, #8b5cf6);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+    /* Floating scroll arrow */
+    .scroll-indicator svg {
+      width: 2rem;
+      height: 2rem;
+    }
+    /* WhatsApp floating button */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 50;
+      background-color: #25D366;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Chatbot placeholder */
+    .chatbot-btn {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      z-index: 50;
+      background-color: #1a73e8;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
@@ -23,16 +74,34 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="h-screen flex flex-col items-center justify-center text-white text-center relative bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1600&q=80');">
-    <div class="bg-black bg-opacity-50 p-8 rounded-lg animate__animated animate__fadeIn">
-      <h1 class="text-5xl font-bold mb-6">Fleet-as-a-Service, Reimagined.</h1>
-      <p class="text-lg mb-8">Smart shift-based fleet models for continuous operation, higher earnings, and platform-ready scalability.</p>
+  <section class="h-screen flex flex-col items-center justify-center text-white text-center relative overflow-hidden">
+    <!-- Animated background -->
+    <div class="absolute inset-0 animate-gradient"></div>
+
+    <div class="relative z-10 p-8 rounded-lg bg-black bg-opacity-50 animate__animated animate__fadeIn">
+      <h1 class="text-5xl font-bold mb-6">Join FLEEGO – Drive with Confidence!</h1>
+      <p class="text-lg mb-6">Looking for a steady and rewarding driving job with Uber? At Fleego, we manage a professional driver fleet with multiple shift options and full support for your success.</p>
+      <ul class="text-left mb-6 list-disc list-inside">
+        <li>Full-time Drivers (Morning/Night Shift)</li>
+        <li>Part-time Drivers (Evening Shift)</li>
+        <li>Substitute Drivers (Flexible Days)</li>
+      </ul>
+      <p class="mb-6">💼 Benefits:</p>
+      <ul class="text-left mb-6 list-disc list-inside">
+        <li>Earn up to ₹50,000/month based on performance</li>
+        <li>Flexible shifts & weekly off</li>
+        <li>Free food & accommodation for full-time drivers</li>
+        <li>24/7 Support including roadside assistance</li>
+        <li>Digital Dashboard Access – track your income, trips, targets & more</li>
+      </ul>
+      <p class="mb-6">📍 Location: Bengaluru</p>
+      <p class="mb-6">📩 Apply Now: fleego005@gmail.com</p>
       <a href="login.html" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow-lg">Join Fleego</a>
     </div>
 
     <!-- Floating Scroll Indicator -->
-    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce scroll-indicator">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
       </svg>
     </div>
@@ -57,38 +126,22 @@
     </div>
   </section>
 
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/918147743329" target="_blank" class="whatsapp-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+      <path d="M13.601 2.326A7.937 7.937 0 0 0 8 .5a7.938 7.938 0 0 0-7.601 5.826c-.38 1.321-.143 2.868.736 4.125L.5 15l4.57-1.02a7.952 7.952 0 0 0 4.93 1.45h.001c4.418 0 8-3.582 8-8 0-1.987-.773-3.81-2.066-5.34zm-5.6 11.118a6.73 6.73 0 0 1-3.435-.962l-.246-.15-2.7.6.575-2.635-.163-.273A6.73 6.73 0 1 1 8 14.75zm3.096-4.177c-.145-.073-.856-.423-.988-.472-.132-.049-.23-.073-.33.073-.1.145-.386.472-.473.57-.087.099-.175.111-.32.037-.145-.073-.613-.225-1.167-.719-.431-.384-.72-.857-.805-.998-.086-.145-.009-.223.064-.295.066-.064.145-.17.218-.255.073-.087.097-.145.145-.242.048-.099.024-.186-.012-.26-.036-.073-.33-.794-.452-1.088-.119-.286-.24-.247-.33-.252l-.282-.005c-.097 0-.255.036-.388.173-.132.136-.504.492-.504 1.2s.516 1.392.588 1.487c.073.099 1.015 1.55 2.46 2.17.344.148.612.236.82.303.344.115.657.099.905.06.276-.045.856-.35.977-.687.122-.337.122-.625.086-.687-.036-.064-.132-.099-.277-.172z"/>
+    </svg>
+  </a>
+
+  <!-- Chatbot Button (Placeholder) -->
+  <div class="chatbot-btn" onclick="alert('Chatbot coming soon! 💬')">
+    💬
+  </div>
+
   <!-- Footer -->
   <footer class="bg-gray-900 text-gray-400 text-center py-6">
     <p>© 2025 Fleego Mobility Services. All Rights Reserved.</p>
   </footer>
-
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/8147743329" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition duration-300 z-50">
-    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M20.52 3.478a11.728 11.728 0 00-16.46 0c-4.582 4.582-4.582 12.002 0 16.584l-1.792 6.527 6.75-1.79c4.58 4.58 12 4.58 16.58 0a11.728 11.728 0 000-16.582zM12 20a8 8 0 110-16 8 8 0 010 16zm4-7c-.2-.1-1.16-.57-1.34-.64-.18-.07-.31-.1-.44.1-.13.2-.5.64-.61.77-.11.13-.22.15-.42.05-.2-.1-.85-.31-1.62-1-.6-.54-1-1.21-1.11-1.41-.11-.2-.01-.31.09-.41.09-.09.2-.22.3-.33.1-.11.13-.2.2-.33.07-.13.03-.25-.02-.35-.06-.1-.44-1.07-.6-1.46-.16-.39-.32-.34-.44-.35-.12-.01-.25-.01-.38-.01s-.35.05-.53.25c-.18.21-.7.69-.7 1.68s.72 1.95.82 2.08c.1.13 1.42 2.17 3.44 3.04 2.02.87 2.02.58 2.38.54.36-.03 1.17-.48 1.34-.95.16-.46.16-.86.11-.95-.05-.1-.18-.15-.38-.25z"/>
-    </svg>
-  </a>
-
-  <!-- Chatbot Placeholder -->
-  <div id="chatbot" class="fixed bottom-20 right-6 w-72 h-96 bg-white shadow-lg rounded-xl overflow-hidden z-50 hidden">
-    <!-- Chatbot content will go here -->
-    <div class="bg-blue-600 text-white p-4 font-bold">Fleego Assistant</div>
-    <div class="p-4 h-80 overflow-y-auto">
-      <p>Hello! How can I help you today?</p>
-    </div>
-    <input type="text" placeholder="Type your message..." class="w-full p-2 border-t border-gray-200">
-  </div>
-
-  <script>
-    // Toggle chatbot
-    const chatbot = document.getElementById('chatbot');
-    const chatButton = document.querySelector('.chat-button');
-    if(chatButton){
-      chatButton.addEventListener('click', () => {
-        chatbot.classList.toggle('hidden');
-      });
-    }
-  </script>
 
 </body>
 </html>
