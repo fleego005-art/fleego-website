@@ -3,57 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FLEEGO – Fleet-as-a-Service</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <title>FLEEGO – Drive with Confidence</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body class="bg-gray-50 text-gray-800">
-
-  <!-- Navbar -->
-  <header class="bg-white shadow-md fixed w-full top-0 z-50">
-    <nav class="container mx-auto flex justify-between items-center p-4">
-      <a href="index.html" class="text-2xl font-bold text-blue-600">FLEEGO</a>
-      <ul class="flex space-x-6">
-        <li><a href="about.html" class="hover:text-blue-600">About Us</a></li>
-        <li><a href="founders.html" class="hover:text-blue-600">Founders</a></li>
-        <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
-        <li><a href="login.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Login</a></li>
-      </ul>
-    </nav>
+<body>
+  
+  <!-- 🔹 Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>FLEEGO – Fleet-as-a-Service, Reimagined</h1>
+      <p>Join Fleego and start your driving career with confidence 🚗</p>
+      <a href="#join" class="btn-primary">Join Now</a>
+    </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="h-screen flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
-    <div>
-      <h1 class="text-5xl font-bold mb-6">Fleet-as-a-Service, Reimagined.</h1>
-      <p class="text-lg mb-8">Smart shift-based fleet models for continuous operation, higher earnings, and platform-ready scalability.</p>
-      <a href="login.html" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow-lg">Join Fleego</a>
-    </div>
+  <!-- 🔹 About / Job Opportunities -->
+  <section id="join" class="join-section">
+    <h2>Join FLEEGO – Drive with Confidence!</h2>
+    <p>Looking for a steady and rewarding driving job with Uber?</p>
+    <p>At Fleego, we manage a professional driver fleet with multiple shift options and full support for your success.</p>
+
+    <h3>💼 Opportunities available for:</h3>
+    <ul>
+      <li>• Full-time Drivers (Morning/Night Shift)</li>
+      <li>• Part-time Drivers (Evening Shift)</li>
+      <li>• Substitute Drivers (Flexible Days)</li>
+    </ul>
+
+    <h3>🎁 Why Choose Fleego?</h3>
+    <ul>
+      <li>✅ Earn up to ₹50,000/month based on your performance</li>
+      <li>✅ Flexible Shifts to match your lifestyle</li>
+      <li>✅ Weekly Off so you get time to rest</li>
+      <li>✅ Free Food & Accommodation for full-time drivers</li>
+      <li>✅ 24/7 Support including roadside assistance</li>
+      <li>✅ Digital Dashboard Access – track your income, trips, targets & more</li>
+    </ul>
+
+    <p>📍 Location: Bengaluru</p>
+    <p>📩 Apply Now: <a href="mailto:fleego005@gmail.com">fleego005@gmail.com</a></p>
+    <p>📱 Call/WhatsApp: <a href="https://wa.me/91XXXXXXXXXX" target="_blank">+91 XXXXX XXXXX</a></p>
   </section>
 
-  <!-- Features -->
-  <section class="container mx-auto py-16">
-    <h2 class="text-3xl font-bold text-center mb-12">Why Choose Fleego?</h2>
-    <div class="grid md:grid-cols-3 gap-10 text-center">
-      <div class="p-6 shadow-lg rounded-xl bg-white">
-        <h3 class="text-xl font-semibold mb-3">Shift-Based Scheduling</h3>
-        <p>Continuous vehicle operation with morning, evening, and night shifts for maximum earning.</p>
-      </div>
-      <div class="p-6 shadow-lg rounded-xl bg-white">
-        <h3 class="text-xl font-semibold mb-3">Driver Benefits</h3>
-        <p>Accommodation, food, and flexible work shifts ensure drivers earn and live better.</p>
-      </div>
-      <div class="p-6 shadow-lg rounded-xl bg-white">
-        <h3 class="text-xl font-semibold mb-3">Data-Driven Dashboards</h3>
-        <p>Real-time profit summaries for drivers, admins, and the CEO at your fingertips.</p>
-      </div>
+  <!-- 🔹 WhatsApp Floating Button -->
+  <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- 🔹 Chatbot -->
+  <div class="chatbot-container" id="chatbot">
+    <div class="chat-header">💬 Fleego Chat</div>
+    <div class="chat-body" id="chatBody">
+      <p><b>Bot:</b> Hi! Welcome to Fleego 🚗. How can I help you?</p>
     </div>
-  </section>
+    <div class="chat-input">
+      <input type="text" id="chatMessage" placeholder="Type a message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 text-center py-6">
-    <p>© 2025 Fleego Mobility Services. All Rights Reserved.</p>
-  </footer>
+  <button class="chat-toggle" onclick="toggleChat()">💬</button>
 
+  <script src="js/main.js"></script>
 </body>
 </html>
