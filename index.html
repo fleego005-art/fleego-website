@@ -198,6 +198,58 @@
       document.getElementById('about').scrollIntoView({behavior:'smooth'});
     });
   </script>
+<!-- Your page content here -->
+
+<!-- Chat & WhatsApp Widget -->
+<div id="chat-widget" style="position:fixed; bottom:20px; right:20px; z-index:1000; display:flex; flex-direction:column; align-items:flex-end; gap:10px;">
+  <!-- Chat Bot Button -->
+  <button id="chatBtn" style="background:#ff4d4d; color:white; border:none; padding:15px 20px; border-radius:50px; cursor:pointer; font-weight:bold;">
+    Chat 💬
+  </button>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/918147743329" target="_blank" style="background:#25D366; color:white; padding:15px 20px; border-radius:50px; text-decoration:none; font-weight:bold;">
+    WhatsApp 💬
+  </a>
+
+  <!-- Chat Box -->
+  <div id="chatBox" style="display:none; width:300px; height:400px; background:white; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.3); overflow:hidden; flex-direction:column;">
+    <div style="background:#ff4d4d; color:white; padding:10px; font-weight:bold;">Fleego Chat</div>
+    <div id="chatContent" style="padding:10px; flex:1; overflow-y:auto;">
+      <p>Hi! Welcome to Fleego. How can we help you today?</p>
+    </div>
+    <input type="text" id="chatInput" placeholder="Type a message..." style="width:100%; border:none; padding:10px; box-sizing:border-box;" />
+  </div>
+</div>
+
+<script>
+  const chatBtn = document.getElementById('chatBtn');
+  const chatBox = document.getElementById('chatBox');
+  const chatInput = document.getElementById('chatInput');
+  const chatContent = document.getElementById('chatContent');
+
+  // Open/close chat box
+  chatBtn.addEventListener('click', () => {
+    chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  // Handle chat input
+  chatInput.addEventListener('keypress', function(e) {
+    if(e.key === 'Enter' && chatInput.value.trim() !== '') {
+      const userMsg = document.createElement('p');
+      userMsg.textContent = "You: " + chatInput.value;
+      chatContent.appendChild(userMsg);
+
+      const botReply = document.createElement('p');
+      botReply.textContent = "Fleego Bot: Thank you! We will get back to you shortly.";
+      botReply.style.color = "blue";
+      chatContent.appendChild(botReply);
+
+      chatInput.value = '';
+      chatContent.scrollTop = chatContent.scrollHeight;
+    }
+  });
+</script>
 
 </body>
 </html>
